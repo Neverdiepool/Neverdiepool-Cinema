@@ -269,6 +269,103 @@ body {
   opacity: 0.7;
   text-shadow: 0 0 8px #7f5cff;
 }
+
+    /* ============================
+   ILLERVERSE COSMIC UPGRADE PACK
+   ============================ */
+
+/* Cosmic Background */
+body {
+  background: radial-gradient(circle at top, #2a1a55, #0a0a0f 70%);
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Logo Glow + Hover Boost */
+.title-image {
+  filter: drop-shadow(0 0 25px #7f5cff);
+  transition: 0.3s ease;
+}
+
+.title-image:hover {
+  filter: drop-shadow(0 0 55px #cbb7ff);
+  transform: rotate(-3deg) scale(1.05);
+}
+
+/* Discord Button Glow */
+.discord-link {
+  box-shadow: 0 0 20px rgba(88, 101, 242, 0.8);
+  transition: 0.25s ease;
+}
+
+.discord-link:hover {
+  box-shadow: 0 0 35px rgba(88, 101, 242, 1);
+  transform: translateY(-2px);
+}
+
+/* Poster Grid Polish */
+.poster-grid {
+  gap: 24px;
+}
+
+/* Poster Cards — Cosmic Glow + Border + Hover */
+.poster-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+  border: 2px solid rgba(127, 92, 255, 0.7);
+  box-shadow:
+    0 0 25px rgba(127, 92, 255, 0.8),
+    0 0 45px rgba(157, 122, 255, 0.6) inset;
+  transform: scale(1.02);
+  transition: 0.25s ease;
+  animation: posterFade 0.6s ease forwards;
+  opacity: 0;
+}
+
+@keyframes posterFade {
+  to { opacity: 1; transform: scale(1.02); }
+}
+
+/* Poster Hover — Max Cosmic */
+.poster-card:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 0 45px rgba(157, 122, 255, 1),
+    0 0 65px rgba(187, 152, 255, 0.9) inset;
+}
+
+/* Poster Shine Sweep */
+.poster-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+.poster-card:hover::after {
+  left: 150%;
+}
+
+/* Footer Glow */
+.footer {
+  text-shadow: 0 0 12px #a78bff;
+}
   </style>
 </head>
 
