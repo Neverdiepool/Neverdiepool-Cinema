@@ -130,15 +130,17 @@
     gap: 30px 26px;
   }
 
+  /* POSTER CARD */
   .poster-card {
     position: relative;
+    border-radius: 10px;
+    overflow: hidden; /* FIXES SQUARE SHADOW */
     opacity: 0;
     animation: posterFade 0.6s ease forwards;
   }
 
   @keyframes posterFade { to { opacity: 1; } }
 
-  /* NUMBER BADGE */
   .poster-number {
     position: absolute;
     top: 8px;
@@ -156,7 +158,6 @@
     backdrop-filter: blur(4px);
   }
 
-  /* POSTER IMAGE + COSMIC HOVER GLOW */
   .poster-image {
     width: 100%;
     border-radius: 10px;
@@ -173,19 +174,24 @@
     transform: translateY(-2px);
   }
 
-  /* ============================
-     HOVER OVERLAY INFO (clean style)
-     ============================ */
+  /* PERFECT HOVER OVERLAY */
   .poster-info {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 14px;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    padding: 16px 12px 20px;
+
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.55) 40%,
+      rgba(0,0,0,0.0) 100%
+    );
+
     opacity: 0;
-    transform: translateY(20px);
-    transition: 0.35s ease;
+    transform: translateY(25px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
     text-align: center;
     pointer-events: none;
   }
@@ -201,15 +207,17 @@
     font-weight: 700;
     color: white;
     text-shadow: 0 0 6px rgba(127, 92, 255, 0.6);
+    line-height: 1.1;
   }
 
   .info-details {
     margin-top: 6px;
-    font-size: 0.78rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    font-size: 0.78rem;
+    line-height: 1;
     color: var(--muted-text);
   }
 
