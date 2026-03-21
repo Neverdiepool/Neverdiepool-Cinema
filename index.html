@@ -122,6 +122,35 @@
   }
 
   /* ============================
+     SEARCH BAR
+     ============================ */
+  .search-container {
+    width: 100%;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 2px solid rgba(127, 92, 255, 0.4);
+    background: #0f0f17;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 0 12px rgba(127, 92, 255, 0.25);
+    outline: none;
+    transition: 0.25s ease;
+  }
+
+  #searchInput:focus {
+    border-color: #a78bff;
+    box-shadow: 0 0 18px rgba(157, 122, 255, 0.55);
+  }
+
+  /* ============================
      POSTER GRID
      ============================ */
   .poster-grid {
@@ -287,6 +316,16 @@
       </a>
     </header>
 
+    <!-- ⭐ SEARCH BAR ADDED HERE ⭐ -->
+    <div class="search-container">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search catalog..."
+        autocomplete="off"
+      />
+    </div>
+
     <main>
       <section class="poster-grid">
 
@@ -327,5 +366,24 @@
     </main>
 
   </div>
+
+  <!-- ⭐ LIVE SEARCH FILTER SCRIPT ⭐ -->
+  <script>
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      const cards = document.querySelectorAll(".poster-card");
+
+      cards.forEach(card => {
+        const title = card.querySelector(".info-title")?.textContent.toLowerCase() || "";
+        const meta = card.querySelector(".info-meta")?.textContent.toLowerCase() || "";
+        const number = card.dataset.number || "";
+
+        const combined = `${title} ${meta} ${number}`.toLowerCase();
+
+        card.style.display = combined.includes(query) ? "block" : "none";
+      });
+    });
+  </script>
+
 </body>
 </html>
