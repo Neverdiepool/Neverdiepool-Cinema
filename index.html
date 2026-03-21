@@ -14,9 +14,6 @@
     --blue: #00b7ff;
   }
 
-  /* ============================
-     BASE PAGE LAYOUT
-     ============================ */
   body {
     margin: 0;
     padding: 0;
@@ -37,9 +34,6 @@
     padding: 20px;
   }
 
-  /* ============================
-     TITLE / LOGO
-     ============================ */
   .title-block {
     text-align: center;
     margin-bottom: 20px;
@@ -49,20 +43,16 @@
     width: 420px;
     transform: rotate(-3deg);
     filter: drop-shadow(0 0 12px var(--accent));
-    transition: 0.3s ease;
     opacity: 0;
     animation: logoFade 0.8s ease forwards;
   }
 
   @keyframes logoFade { to { opacity: 1; } }
 
-  /* ============================
-     TOP ROW (Catalog + Search + Discord)
-     ============================ */
   .top-row {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto 25px;
+    margin: 0 auto 55px; /* FIXED SPACING */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -103,9 +93,6 @@
     box-shadow: 0 0 14px rgba(157, 122, 255, 0.45);
   }
 
-  /* ============================
-     DISCORD BUTTON
-     ============================ */
   .discord-link {
     display: flex;
     align-items: center;
@@ -118,310 +105,4 @@
     font-size: 0.9rem;
     font-weight: bold;
     box-shadow: 0 0 12px rgba(88, 101, 242, 0.6);
-    transition: 0.25s ease;
-    white-space: nowrap;
-  }
-
-  .discord-link:hover {
-    box-shadow: 0 0 22px rgba(127, 92, 255, 0.9);
-    transform: translateY(-2px);
-  }
-
-  .discord-icon {
-    width: 22px;
-    height: 22px;
-    background-color: white;
-    mask: url("https://simpleicons.org/icons/discord.svg") no-repeat center;
-    -webkit-mask: url("https://simpleicons.org/icons/discord.svg") no-repeat center;
-    background-size: cover;
-  }
-
-  /* ============================
-     POSTER GRID
-     ============================ */
-  .poster-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
-    gap: 30px 26px;
-    margin-top: 10px;
-  }
-
-  /* ============================
-     CLEAN CATALOG POSTER CARDS
-     ============================ */
-  .poster-card {
-    text-align: center;
-    opacity: 0;
-    animation: posterFade 0.6s ease forwards;
-    padding-bottom: 6px;
-  }
-
-  @keyframes posterFade { to { opacity: 1; } }
-
-  .poster-image {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow:
-      0 4px 14px rgba(0, 0, 0, 0.55),
-      0 0 10px rgba(127, 92, 255, 0.25);
-    display: block;
-  }
-
-  /* Poster number + title */
-  .poster-meta {
-    margin-top: 8px;
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    font-size: 0.92rem;
-    font-weight: 600;
-  }
-
-  .poster-number {
-    color: var(--blue);
-    text-shadow: 0 0 4px rgba(0, 183, 255, 0.6);
-  }
-
-  .poster-title {
-    color: white;
-    text-shadow: 0 0 5px rgba(127, 92, 255, 0.5);
-  }
-
-  /* Year • Rating Box • Stars */
-  .poster-details {
-    margin-top: 4px;
-    font-size: 0.78rem;
-    color: var(--muted-text);
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    align-items: center;
-  }
-
-  /* Rating box */
-  .rating-box {
-    padding: 2px 7px;
-    border-radius: 5px;
-    background: rgba(20, 12, 40, 0.75);
-    border: 1px solid rgba(127, 92, 255, 0.7);
-    box-shadow: 0 0 5px rgba(127, 92, 255, 0.45);
-    font-size: 0.72rem;
-    color: white;
-    letter-spacing: 0.02em;
-  }
-
-  /* Cosmic glowing stars */
-  .star-rating {
-    color: var(--accent);
-    text-shadow: 0 0 5px rgba(127, 92, 255, 0.7);
-    font-size: 0.78rem;
-  }
-
-  /* ============================
-     FOOTER
-     ============================ */
-  .footer {
-    text-align: center;
-    margin-top: 40px;
-    color: var(--muted-text);
-    font-size: 0.85rem;
-    opacity: 0.6;
-    text-shadow: 0 0 5px rgba(127, 92, 255, 0.4);
-  }
-
-  /* ============================
-     MOBILE OPTIMIZATION
-     ============================ */
-  @media (max-width: 600px) {
-    .page { padding: 14px; }
-
-    .title-image {
-      width: 300px;
-      margin: 0 auto;
-      display: block;
-    }
-
-    .top-row {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 10px;
-    }
-
-    .site-subtitle {
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-    }
-
-    .search-container {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .discord-link {
-      padding: 7px 12px;
-      font-size: 0.85rem;
-    }
-
-    .poster-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      max-width: 340px;
-      margin: 0 auto;
-    }
-  }
-  </style>
-</head>
-
-<body>
-  <div class="page">
-
-    <div class="title-block">
-      <img src="images/illerVerse.png" alt="illerVerse Cinema" class="title-image">
-    </div>
-
-    <div class="top-row">
-      <h2 class="site-subtitle">Catalog</h2>
-
-      <div class="search-container">
-        <input 
-          type="text" 
-          id="searchInput" 
-          placeholder="Search catalog..."
-          autocomplete="off"
-        />
-      </div>
-
-      <a class="discord-link" href="https://discord.gg/vpq26ScgUd" target="_blank" rel="noopener noreferrer">
-        <span class="discord-icon"></span>
-        <span>Discord</span>
-      </a>
-    </div>
-
-    <main>
-      <section class="poster-grid">
-
-        <!-- POSTER 1 -->
-        <article class="poster-card" data-number="1">
-          <img class="poster-image" src="images/poster-01.jpg" alt="Black Bird" />
-
-          <div class="poster-meta">
-            <span class="poster-number">#1</span>
-            <span class="poster-title">Black Bird</span>
-          </div>
-
-          <div class="poster-details">
-            <span class="poster-year">2022</span>
-            <span class="rating-box">R</span>
-            <span class="star-rating">★★★★★</span>
-          </div>
-        </article>
-
-        <!-- POSTER 2 -->
-        <article class="poster-card" data-number="2">
-          <img class="poster-image" src="images/poster-02.jpg" alt="Movie 2" />
-
-          <div class="poster-meta">
-            <span class="poster-number">#2</span>
-            <span class="poster-title">Movie 2</span>
-          </div>
-
-          <div class="poster-details">
-            <span class="poster-year">2023</span>
-            <span class="rating-box">PG-13</span>
-            <span class="star-rating">★★★☆☆</span>
-          </div>
-        </article>
-
-        <!-- POSTER 3 -->
-        <article class="poster-card" data-number="3">
-          <img class="poster-image" src="images/poster-03.jpg" alt="Movie 3" />
-
-          <div class="poster-meta">
-            <span class="poster-number">#3</span>
-            <span class="poster-title">Movie 3</span>
-          </div>
-
-          <div class="poster-details">
-            <span class="poster-year">2021</span>
-            <span class="rating-box">R</span>
-            <span class="star-rating">★★★★☆</span>
-          </div>
-        </article>
-
-        <!-- POSTER 4 -->
-        <article class="poster-card" data-number="4">
-          <img class="poster-image" src="images/poster-04.jpg" alt="Movie 4" />
-
-          <div class="poster-meta">
-            <span class="poster-number">#4</span>
-            <span class="poster-title">Movie 4</span>
-          </div>
-
-          <div class="poster-details">
-            <span class="poster-year">2020</span>
-            <span class="rating-box">PG</span>
-            <span class="star-rating">★★★☆☆</span>
-          </div>
-        </article>
-
-        <!-- POSTER 5 -->
-        <article class="poster-card" data-number="5">
-          <img class="poster-image" src="images/poster-05.jpg" alt="Movie 5" />
-
-          <div class="poster-meta">
-            <span class="poster-number">#5</span>
-            <span class="poster-title">Movie 5</span>
-          </div>
-
-          <div class="poster-details">
-            <span class="poster-year">2019</span>
-            <span class="rating-box">PG-13</span>
-            <span class="star-rating">★★★★★</span>
-          </div>
-        </article>
-
-        <!-- POSTER 6 -->
-        <article class="poster-card" data-number="6">
-          <img class="poster-image" src="images/poster-06.jpg" alt="Movie 6" />
-
-          <div class="poster-meta">
-            <span class="poster-number">#6</span>
-            <span class="poster-title">Movie 6</span>
-          </div>
-
-          <div class="poster-details">
-            <span class="poster-year">2018</span>
-            <span class="rating-box">R</span>
-            <span class="star-rating">★★☆☆☆</span>
-          </div>
-        </article>
-
-      </section>
-
-      <div class="footer">
-        illerVerse • illerFlix • Neverdiepool
-      </div>
-    </main>
-
-  </div>
-
-  <script>
-    document.getElementById("searchInput").addEventListener("input", function () {
-      const query = this.value.toLowerCase();
-      const cards = document.querySelectorAll(".poster-card");
-
-      cards.forEach(card => {
-        const title = card.querySelector(".poster-title")?.textContent.toLowerCase() || "";
-        const year = card.querySelector(".poster-year")?.textContent.toLowerCase() || "";
-        const number = card.dataset.number || "";
-
-        const combined = `${title} ${year} ${number}`.toLowerCase();
-
-        card.style.display = combined.includes(query) ? "block" : "none";
-      });
-    });
-  </script>
-
-</body>
-</html>
+    transition
