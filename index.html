@@ -49,7 +49,7 @@
 
   @keyframes logoFade { to { opacity: 1; } }
 
-  /* HEADER SPACING FIX */
+  /* HEADER SPACING */
   .top-row {
     width: 100%;
     max-width: 1200px;
@@ -161,7 +161,7 @@
     backdrop-filter: blur(4px);
   }
 
-  /* POSTER IMAGE + COSMIC HOVER GLOW (Option C) */
+  /* POSTER IMAGE + COSMIC HOVER GLOW */
   .poster-image {
     width: 100%;
     border-radius: 10px;
@@ -226,6 +226,53 @@
     opacity: 0.6;
     text-shadow: 0 0 5px rgba(127, 92, 255, 0.4);
   }
+
+  /* ============================
+     MOBILE CENTERING FIX
+     ============================ */
+  @media (max-width: 600px) {
+
+    .page {
+      padding: 14px;
+    }
+
+    .title-image {
+      width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .top-row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .search-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .poster-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .poster-card {
+      margin: 0 auto;
+    }
+
+    .poster-number {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+    }
+  }
+
   </style>
 </head>
 
