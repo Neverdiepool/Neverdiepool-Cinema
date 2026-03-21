@@ -11,6 +11,7 @@
     --text: #ffffff;
     --muted-text: #b3b3b3;
     --accent: #7f5cff;
+    --blue: #00b7ff;
   }
 
   /* ============================
@@ -28,9 +29,7 @@
     animation: pageFade 0.8s ease forwards;
   }
 
-  @keyframes pageFade {
-    to { opacity: 1; }
-  }
+  @keyframes pageFade { to { opacity: 1; } }
 
   .page {
     width: 100%;
@@ -49,15 +48,13 @@
   .title-image {
     width: 420px;
     transform: rotate(-3deg);
-    filter: drop-shadow(0 0 12px #7f5cff);
+    filter: drop-shadow(0 0 12px var(--accent));
     transition: 0.3s ease;
     opacity: 0;
     animation: logoFade 0.8s ease forwards;
   }
 
-  @keyframes logoFade {
-    to { opacity: 1; }
-  }
+  @keyframes logoFade { to { opacity: 1; } }
 
   /* ============================
      TOP ROW (Catalog + Search + Discord)
@@ -65,22 +62,12 @@
   .top-row {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto 20px;
+    margin: 0 auto 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
   }
-
-  .top-row {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 80px; /* increased bottom margin */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    }
 
   .site-subtitle {
     font-size: 0.9rem;
@@ -91,7 +78,6 @@
     margin: 0;
   }
 
-  /* Center search bar */
   .search-container {
     flex: 1;
     display: flex;
@@ -144,7 +130,6 @@
   .discord-icon {
     width: 22px;
     height: 22px;
-    display: inline-block;
     background-color: white;
     mask: url("https://simpleicons.org/icons/discord.svg") no-repeat center;
     -webkit-mask: url("https://simpleicons.org/icons/discord.svg") no-repeat center;
@@ -162,7 +147,7 @@
   }
 
   /* ============================
-     POSTER CARDS (SOFT GLOW)
+     POSTER CARDS
      ============================ */
   .poster-card {
     position: relative;
@@ -176,9 +161,7 @@
     animation: posterFade 0.6s ease forwards;
   }
 
-  @keyframes posterFade {
-    to { opacity: 1; }
-  }
+  @keyframes posterFade { to { opacity: 1; } }
 
   .poster-card:hover {
     transform: scale(1.06);
@@ -190,15 +173,26 @@
     display: block;
   }
 
+  /* ============================
+     COSMIC DUAL‑TONE POSTER NUMBERS
+     ============================ */
   .poster-number {
     position: absolute;
     top: 8px;
     left: 8px;
-    background: rgba(0,0,0,0.6);
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 4px 10px;
+    border-radius: 999px;
+
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--blue);
+    border: 1px solid var(--accent);
+
     font-size: 0.8rem;
-    color: white;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    filter: drop-shadow(0 0 6px var(--accent));
     backdrop-filter: blur(4px);
   }
 
@@ -239,54 +233,48 @@
      MOBILE OPTIMIZATION
      ============================ */
   @media (max-width: 600px) {
-  .page {
-    padding: 14px;
-  }
 
-  .title-image {
-    width: 300px;
-    margin: 0 auto;
-    display: block;
-  }
+    .page { padding: 14px; }
 
-  /* Center the whole top row under the logo */
-  .top-row {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
+    .title-image {
+      width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
 
-  .site-subtitle {
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    text-align: center;
-  }
+    .top-row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
 
-  .search-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+    .site-subtitle {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+    }
 
-  .discord-link {
-    padding: 7px 12px;
-    font-size: 0.85rem;
-    align-self: center;
-  }
+    .search-container {
+      width: 100%;
+      justify-content: center;
+    }
 
-  /* Center ALL posters under the header */
-  .poster-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-    max-width: 320px;
-    margin: 0 auto;
-  }
+    .discord-link {
+      padding: 7px 12px;
+      font-size: 0.85rem;
+    }
 
-  .poster-number {
-    font-size: 0.7rem;
-    padding: 3px 6px;
-  }
+    .poster-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .poster-number {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+    }
   }
 
   /* ============================
@@ -314,7 +302,7 @@
     color: var(--muted-text);
     font-size: 0.85rem;
     opacity: 0.7;
-    text-shadow: 0 0 8px #7f5cff;
+    text-shadow: 0 0 8px var(--accent);
   }
 
   </style>
@@ -327,7 +315,6 @@
       <img src="images/illerVerse.png" alt="illerVerse Cinema" class="title-image">
     </div>
 
-    <!-- ⭐ NEW 3‑WAY ALIGNED TOP ROW ⭐ -->
     <div class="top-row">
       <h2 class="site-subtitle">Catalog</h2>
 
@@ -378,7 +365,7 @@
           <img class="poster-image" src="images/poster-05.jpg" alt="Movie 5" />
         </article>
 
-        <article class="poster-card" data-number="5">
+        <article class="poster-card" data-number="6">
           <div class="poster-number">#6</div>
           <img class="poster-image" src="images/poster-06.jpg" alt="Movie 6" />
         </article>
@@ -392,7 +379,6 @@
 
   </div>
 
-  <!-- ⭐ LIVE SEARCH FILTER SCRIPT ⭐ -->
   <script>
     document.getElementById("searchInput").addEventListener("input", function () {
       const query = this.value.toLowerCase();
