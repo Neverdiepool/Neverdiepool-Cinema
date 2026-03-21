@@ -62,7 +62,7 @@
   .top-row {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto 80px;
+    margin: 0 auto 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -70,11 +70,11 @@
   }
 
   .site-subtitle {
-    font-size: 0.9rem;
+    font-size: 1rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted-text);
-    opacity: 0.85;
+    opacity: 0.9;
     margin: 0;
   }
 
@@ -86,7 +86,7 @@
 
   #searchInput {
     width: 100%;
-    max-width: 400px;
+    max-width: 380px;
     padding: 10px 14px;
     border-radius: 8px;
     border: 2px solid rgba(127, 92, 255, 0.4);
@@ -123,7 +123,7 @@
   }
 
   .discord-link:hover {
-    box-shadow: 0 0 22px rgba(88, 101, 242, 0.9);
+    box-shadow: 0 0 22px rgba(127, 92, 255, 0.9);
     transform: translateY(-2px);
   }
 
@@ -142,155 +142,74 @@
   .poster-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 22px;
+    gap: 26px;
     margin-top: 10px;
   }
 
   /* ============================
-     POSTER CARDS
+     CLEAN CATALOG POSTER CARDS
      ============================ */
   .poster-card {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #111;
-    border: 2px solid rgba(127, 92, 255, 0.4);
-    box-shadow: 0 0 12px rgba(127, 92, 255, 0.35);
-    transition: 0.25s ease;
+    text-align: center;
     opacity: 0;
     animation: posterFade 0.6s ease forwards;
   }
 
   @keyframes posterFade { to { opacity: 1; } }
 
-  .poster-card:hover {
-    transform: scale(1.06);
-    box-shadow: 0 0 22px rgba(157, 122, 255, 0.55);
-  }
-
   .poster-image {
     width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 14px rgba(127, 92, 255, 0.25);
     display: block;
   }
 
-  /* ============================
-     COSMIC DUAL‑TONE POSTER NUMBERS
-     ============================ */
-  .poster-number {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    padding: 4px 10px;
-    border-radius: 999px;
-
-    background: rgba(0, 0, 0, 0.75);
-    color: var(--blue);
-    border: 1px solid var(--accent);
-
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-
-    filter: drop-shadow(0 0 6px var(--accent));
-    backdrop-filter: blur(4px);
-  }
-
-  /* ============================
-     TMDB-STYLE HOVER INFO
-     ============================ */
-  .poster-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.35s ease;
-    color: white;
-  }
-
-  .poster-card:hover .poster-info {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .info-title {
-    margin: 0;
-    font-size: 1rem;
+  /* Poster number + title */
+  .poster-meta {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.95rem;
     font-weight: bold;
   }
 
-  .info-meta {
-    margin: 4px 0 0;
+  .poster-number {
+    color: var(--blue);
+    text-shadow: 0 0 6px var(--accent);
+  }
+
+  .poster-title {
+    color: white;
+    text-shadow: 0 0 6px rgba(127, 92, 255, 0.6);
+  }
+
+  /* Year • Rating Box • Stars */
+  .poster-details {
+    margin-top: 6px;
     font-size: 0.8rem;
-    color: #d0caff;
+    color: var(--muted-text);
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
   }
 
-  /* ============================
-     MOBILE OPTIMIZATION
-     ============================ */
-  @media (max-width: 600px) {
-
-    .page { padding: 14px; }
-
-    .title-image {
-      width: 300px;
-      margin: 0 auto;
-      display: block;
-    }
-
-    .top-row {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 10px;
-    }
-
-    .site-subtitle {
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-    }
-
-    .search-container {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .discord-link {
-      padding: 7px 12px;
-      font-size: 0.85rem;
-    }
-
-    .poster-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      max-width: 320px;
-      margin: 0 auto;
-    }
-
-    .poster-number {
-      font-size: 0.7rem;
-      padding: 3px 8px;
-    }
+  /* Rating box */
+  .rating-box {
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(20, 12, 40, 0.8);
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 6px rgba(127, 92, 255, 0.6);
+    font-size: 0.75rem;
+    color: white;
   }
 
-  /* ============================
-     DESKTOP HOVER BEHAVIOR
-     ============================ */
-  @media (min-width: 601px) {
-    .poster-info {
-      opacity: 0;
-      transform: translateY(12px);
-      pointer-events: none;
-    }
-
-    .poster-card:hover .poster-info {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Cosmic glowing stars */
+  .star-rating {
+    color: var(--accent);
+    text-shadow: 0 0 6px var(--accent);
   }
 
   /* ============================
@@ -336,38 +255,100 @@
     <main>
       <section class="poster-grid">
 
+        <!-- POSTER 1 -->
         <article class="poster-card" data-number="1">
-          <div class="poster-number">#1</div>
           <img class="poster-image" src="images/poster-01.jpg" alt="Black Bird" />
-          <div class="poster-info">
-            <h3 class="info-title">Black Bird</h3>
-            <p class="info-meta">2022 • ★★★★★</p>
+
+          <div class="poster-meta">
+            <span class="poster-number">#1</span>
+            <span class="poster-title">Black Bird</span>
+          </div>
+
+          <div class="poster-details">
+            <span class="poster-year">2022</span>
+            <span class="rating-box">R</span>
+            <span class="star-rating">★★★★★</span>
           </div>
         </article>
 
+        <!-- POSTER 2 -->
         <article class="poster-card" data-number="2">
-          <div class="poster-number">#2</div>
           <img class="poster-image" src="images/poster-02.jpg" alt="Movie 2" />
+
+          <div class="poster-meta">
+            <span class="poster-number">#2</span>
+            <span class="poster-title">Movie 2</span>
+          </div>
+
+          <div class="poster-details">
+            <span class="poster-year">2023</span>
+            <span class="rating-box">PG-13</span>
+            <span class="star-rating">★★★☆☆</span>
+          </div>
         </article>
 
+        <!-- POSTER 3 -->
         <article class="poster-card" data-number="3">
-          <div class="poster-number">#3</div>
           <img class="poster-image" src="images/poster-03.jpg" alt="Movie 3" />
+
+          <div class="poster-meta">
+            <span class="poster-number">#3</span>
+            <span class="poster-title">Movie 3</span>
+          </div>
+
+          <div class="poster-details">
+            <span class="poster-year">2021</span>
+            <span class="rating-box">R</span>
+            <span class="star-rating">★★★★☆</span>
+          </div>
         </article>
 
+        <!-- POSTER 4 -->
         <article class="poster-card" data-number="4">
-          <div class="poster-number">#4</div>
           <img class="poster-image" src="images/poster-04.jpg" alt="Movie 4" />
+
+          <div class="poster-meta">
+            <span class="poster-number">#4</span>
+            <span class="poster-title">Movie 4</span>
+          </div>
+
+          <div class="poster-details">
+            <span class="poster-year">2020</span>
+            <span class="rating-box">PG</span>
+            <span class="star-rating">★★★☆☆</span>
+          </div>
         </article>
 
+        <!-- POSTER 5 -->
         <article class="poster-card" data-number="5">
-          <div class="poster-number">#5</div>
           <img class="poster-image" src="images/poster-05.jpg" alt="Movie 5" />
+
+          <div class="poster-meta">
+            <span class="poster-number">#5</span>
+            <span class="poster-title">Movie 5</span>
+          </div>
+
+          <div class="poster-details">
+            <span class="poster-year">2019</span>
+            <span class="rating-box">PG-13</span>
+            <span class="star-rating">★★★★★</span>
+          </div>
         </article>
 
+        <!-- POSTER 6 -->
         <article class="poster-card" data-number="6">
-          <div class="poster-number">#6</div>
           <img class="poster-image" src="images/poster-06.jpg" alt="Movie 6" />
+
+          <div class="poster-meta">
+            <span class="poster-number">#6</span>
+            <span class="poster-title">Movie 6</span>
+          </div>
+
+          <div class="poster-details">
+            <span class="poster-year">2018</span>
+            <span class="rating-box">R</span>
+            <span class="star-rating">★★☆☆☆</span>
+          </div>
         </article>
 
       </section>
@@ -385,11 +366,11 @@
       const cards = document.querySelectorAll(".poster-card");
 
       cards.forEach(card => {
-        const title = card.querySelector(".info-title")?.textContent.toLowerCase() || "";
-        const meta = card.querySelector(".info-meta")?.textContent.toLowerCase() || "";
+        const title = card.querySelector(".poster-title")?.textContent.toLowerCase() || "";
+        const year = card.querySelector(".poster-year")?.textContent.toLowerCase() || "";
         const number = card.dataset.number || "";
 
-        const combined = `${title} ${meta} ${number}`.toLowerCase();
+        const combined = `${title} ${year} ${number}`.toLowerCase();
 
         card.style.display = combined.includes(query) ? "block" : "none";
       });
