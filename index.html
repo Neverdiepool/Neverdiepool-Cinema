@@ -200,6 +200,39 @@ body {
 @keyframes logoFade {
   to { opacity: 1; }
 }
+    /* ============================
+   MOBILE OPTIMIZATION
+   ============================ */
+
+@media (max-width: 600px) {
+
+  .page {
+    padding: 14px;
+  }
+
+  .title-image {
+    width: 200px;
+  }
+
+  .poster-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 16px;
+  }
+
+  .poster-number {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+
+  .site-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+  }
+
+  .discord-link {
+    padding: 7px 12px;
+    font-size: 0.85rem;
+  }
 </style>
 </head>
 
