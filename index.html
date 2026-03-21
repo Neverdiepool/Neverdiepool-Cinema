@@ -235,6 +235,39 @@ body {
     padding: 7px 12px;
     font-size: 0.85rem;
   }
+  /* ============================
+   TMDB-STYLE HOVER INFO
+   ============================ */
+
+.poster-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.35s ease;
+  color: white;
+}
+
+.poster-card:hover .poster-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.info-meta {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: #d0caff;
+}
 </style>
 </head>
 
