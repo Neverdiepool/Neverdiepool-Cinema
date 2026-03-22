@@ -257,23 +257,40 @@
     .poster-number { font-size: 0.72rem; padding: 3px 8px; }
   }
 
-  /* MOVING STAR BACKGROUND */
-  .stars {
+  /* FUTURISTIC NEON CORNER BORDERS */
+  .corner-frame {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background: transparent url('https://i.ibb.co/7WZRyJp/stars-texture.png') repeat;
-    animation: drift 60s linear infinite;
-    opacity: 0.35;
+    inset: 0;
     pointer-events: none;
-    z-index: -1;
+    z-index: 5;
   }
 
-  @keyframes drift {
-    from { transform: translate(0, 0); }
-    to { transform: translate(-500px, -500px); }
+  .corner-frame::before,
+  .corner-frame::after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--accent);
+    filter: drop-shadow(0 0 8px var(--accent));
+  }
+
+  /* Top-left corner */
+  .corner-frame::before {
+    top: 20px;
+    left: 20px;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 8px 0 0 0;
+  }
+
+  /* Bottom-right corner */
+  .corner-frame::after {
+    bottom: 20px;
+    right: 20px;
+    border-left: none;
+    border-top: none;
+    border-radius: 0 0 8px 0;
   }
 
   </style>
@@ -281,7 +298,8 @@
 
 <body>
 
-  <div class="stars"></div>
+  <!-- NEW FUTURISTIC CORNER BORDERS -->
+  <div class="corner-frame"></div>
 
   <div class="page">
 
@@ -305,8 +323,7 @@
     <main>
       <section class="poster-grid">
 
-        <!-- POSTERS (unchanged) -->
-        <!-- You can now replace these with your real catalog anytime -->
+        <!-- POSTERS (unchanged for now) -->
 
         <article class="poster-card" data-number="1">
           <div class="poster-number">#1</div>
@@ -320,8 +337,6 @@
             </div>
           </div>
         </article>
-
-        <!-- (Posters 2–6 unchanged for now) -->
 
       </section>
 
@@ -342,7 +357,6 @@
         const year = card.querySelector(".year")?.textContent.toLowerCase() || "";
         const number = card.dataset.number || "";
 
-        /* FIXED TEMPLATE STRING */
         const combined = `${title} ${year} ${number}`.toLowerCase();
 
         card.style.display = combined.includes(query) ? "block" : "none";
