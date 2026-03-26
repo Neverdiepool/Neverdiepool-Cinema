@@ -198,6 +198,56 @@
   100% { transform: translateY(-120px) scale(0.4); opacity: 0; }
 }
 
+    /* ============================
+      FUTURE LINE + PARTICLES
+============================= */
+
+.logo-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 3px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(0,183,255,0.9),
+    rgba(127,92,255,1),
+    rgba(0,183,255,0.9),
+    transparent
+  );
+  filter: blur(2px);
+  animation: linePulse 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes linePulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scaleX(0.9); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scaleX(1.1); }
+}
+
+.logo-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.logo-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgba(0,183,255,0.9);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: rise 6s linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.9; }
+  100% { transform: translateY(-120px) scale(0.4); opacity: 0; }
+}
+
   /* ============================
        SEARCH BAR
   ============================= */
