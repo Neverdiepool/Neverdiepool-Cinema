@@ -286,18 +286,18 @@
   }
 
 /* ============================
-      SEARCH BAR FULL-WIDTH GLOW LINE
+      SEARCH INPUT GLOW LINE
 ============================= */
-.search-container {
+#searchInput {
   position: relative; /* required */
 }
 
-.search-container::after {
+#searchInput::after {
   content: "";
   position: absolute;
-  bottom: -16px; /* puts it BELOW the search bar */
+  bottom: -16px; /* distance BELOW the search bar */
   left: 0;
-  width: 100%; /* full width */
+  width: 100%; /* matches the input width exactly */
   height: 3px;
   background: var(--accent);
   box-shadow:
@@ -306,6 +306,7 @@
     0 0 30px var(--accent);
   border-radius: 4px;
   opacity: 0.9;
+  pointer-events: none;
 }
 
   /* ============================
