@@ -74,37 +74,34 @@
 
   /* ============================
        TITLE + HEADER
-  ============================= */
-  .title-block {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .title-image {
-    width: 420px;
-    transform: rotate(-3deg);
-    filter: drop-shadow(0 0 12px var(--accent));
-    opacity: 0;
-    animation: logoFade 0.8s ease forwards, logoPulse 8s ease-in-out infinite;
-  }
-
-  @keyframes logoFade { to { opacity: 1; } }
-
-  @keyframes logoPulse {
-    0%, 100% { filter: drop-shadow(0 0 12px var(--accent)); }
-    50% { filter: drop-shadow(0 0 22px var(--accent)); }
-  }
-
-    /* ============================
-      TRON SCAN LINE
 ============================= */
-
 .title-block {
   position: relative;
   text-align: center;
   margin-bottom: 20px;
 }
 
+/* LOGO IMAGE */
+.title-image {
+  width: 420px;
+  transform: rotate(-3deg);
+  filter: drop-shadow(0 0 12px var(--accent));
+  opacity: 0;
+  animation: logoFade 0.8s ease forwards, logoPulse 8s ease-in-out infinite;
+}
+
+@keyframes logoFade { to { opacity: 1; } }
+
+@keyframes logoPulse {
+  0%, 100% { filter: drop-shadow(0 0 12px var(--accent)); }
+  50% { filter: drop-shadow(0 0 22px var(--accent)); }
+}
+
+
+
+/* ============================
+      TRON SCAN LINE
+============================= */
 .logo-scanline {
   position: absolute;
   top: 50%;
@@ -122,6 +119,120 @@
   opacity: 0.9;
   animation: scanMove 2.8s ease-in-out infinite;
   z-index: -1;
+}
+
+@keyframes scanMove {
+  0% { transform: translateX(-120%) scaleX(0.8); opacity: 0; }
+  20% { opacity: 1; }
+  50% { transform: translateX(20%) scaleX(1.1); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(120%) scaleX(0.8); opacity: 0; }
+}
+
+
+
+/* ============================
+      COSMIC HALO BEHIND LOGO
+============================= */
+.title-block::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle,
+    rgba(127,92,255,0.35),
+    rgba(0,183,255,0.15),
+    transparent 70%
+  );
+  filter: blur(40px);
+  z-index: -2;
+}
+
+
+
+/* ============================
+      LIGHT STREAK SHIMMER
+============================= */
+.title-block::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -40%;
+  width: 180%;
+  height: 120px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+  transform: translateY(-50%) rotate(-8deg);
+  animation: streakMove 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes streakMove {
+  0% { transform: translate(-120%, -50%) rotate(-8deg); opacity: 0; }
+  20% { opacity: 1; }
+  50% { transform: translate(20%, -50%) rotate(-8deg); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate(120%, -50%) rotate(-8deg); opacity: 0; }
+}
+
+
+
+/* ============================
+      FLOATING PARTICLES (SOFT)
+============================= */
+.logo-particles-soft {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.logo-particle-soft {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  filter: blur(3px);
+  animation: floatSoft 7s linear infinite;
+}
+
+@keyframes floatSoft {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-140px) scale(0.4); opacity: 0; }
+}
+
+
+
+/* ============================
+      FLOATING PARTICLES (NEON)
+============================= */
+.logo-particles-neon {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.logo-particle-neon {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgba(0,183,255,0.9);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: floatNeon 5s linear infinite;
+}
+
+@keyframes floatNeon {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-160px) scale(0.4); opacity: 0; }
 }
 
 @keyframes scanMove {
@@ -437,11 +548,26 @@
 
     <div class="title-block">
 
-      <!-- TRON SCAN LINE -->
-      <div class="logo-scanline"></div>
+  <!-- TRON SCAN LINE -->
+  <div class="logo-scanline"></div>
 
-      <!-- LOGO IMAGE -->
-      <img src="images/illerVerse.png" class="title-image" alt="illerVerse Logo">
+  <!-- COSMIC SOFT PARTICLES -->
+  <div class="logo-particles-soft">
+    <div class="logo-particle-soft" style="left: 20%; animation-delay: 0s;"></div>
+    <div class="logo-particle-soft" style="left: 40%; animation-delay: 1s;"></div>
+    <div class="logo-particle-soft" style="left: 60%; animation-delay: 2s;"></div>
+    <div class="logo-particle-soft" style="left: 80%; animation-delay: 3s;"></div>
+  </div>
+
+  <!-- NEON PARTICLES -->
+  <div class="logo-particles-neon">
+    <div class="logo-particle-neon" style="left: 25%; animation-delay: 0s;"></div>
+    <div class="logo-particle-neon" style="left: 50%; animation-delay: 1.2s;"></div>
+    <div class="logo-particle-neon" style="left: 75%; animation-delay: 2.4s;"></div>
+  </div>
+
+  <!-- LOGO IMAGE -->
+  <img src="images/illerVerse.png" class="title-image" alt="illerVerse Logo">
 
     </div>
 
