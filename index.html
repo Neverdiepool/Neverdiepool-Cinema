@@ -17,9 +17,6 @@
     --glow-2: rgba(0, 183, 255, 0.35);
   }
 
-  /* ============================
-       GLOBAL LAYOUT
-  ============================= */
   body {
     margin: 0;
     padding: 0;
@@ -40,19 +37,17 @@
     max-width: 1200px;
     padding: 20px;
     position: relative;
-    z-index: 2;
+    z-index: 3;
   }
 
-  /* ============================
-       COSMIC BACKGROUND FLARE
-  ============================= */
   .cosmic-bg {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background: radial-gradient(circle at 30% 20%, rgba(127,92,255,0.12), transparent 60%),
-                radial-gradient(circle at 70% 80%, rgba(0,183,255,0.10), transparent 60%);
+    background:
+      radial-gradient(circle at 30% 20%, rgba(127,92,255,0.12), transparent 60%),
+      radial-gradient(circle at 70% 80%, rgba(0,183,255,0.10), transparent 60%);
     animation: drift 18s ease-in-out infinite alternate;
   }
 
@@ -61,9 +56,6 @@
     100% { transform: translate(20px, -20px) scale(1.05); }
   }
 
-  /* ============================
-       VIGNETTE
-  ============================= */
   .vignette {
     position: fixed;
     inset: 0;
@@ -72,12 +64,73 @@
     background: radial-gradient(circle, transparent 60%, rgba(0,0,0,0.55));
   }
 
-  /* ============================
-       TITLE + HEADER
-  ============================= */
-  .title-block {
-    text-align: center;
-    margin-bottom: 20px;
+  /* LOGO EFFECTS */
+  .logo-halo {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+      rgba(127,92,255,0.25),
+      rgba(0,0,0,0)
+    );
+    filter: blur(40px);
+    z-index: -1;
+    animation: haloPulse 10s ease-in-out infinite;
+  }
+
+  @keyframes haloPulse {
+    0%, 100% { opacity: 0.45; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.75; transform: translateX(-50%) scale(1.08); }
+  }
+
+  .particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(127,92,255,0.55);
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: floatParticle 12s linear infinite;
+  }
+
+  @keyframes floatParticle {
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    100% { transform: translateY(-120px) scale(0.4); opacity: 0; }
+  }
+
+  .light-streak {
+    position: absolute;
+    top: 50%;
+    left: -200px;
+    width: 600px;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(127,92,255,0.6),
+      rgba(0,183,255,0.6),
+      transparent
+    );
+    filter: blur(4px);
+    animation: streakMove 12s ease-in-out infinite;
+  }
+
+  @keyframes streakMove {
+    0% { transform: translateX(-200px); opacity: 0; }
+    20% { opacity: 1; }
+    50% { transform: translateX(200px); opacity: 1; }
+    80% { opacity: 0; }
+    100% { transform: translateX(400px); opacity: 0; }
   }
 
   .title-image {
@@ -85,14 +138,28 @@
     transform: rotate(-3deg);
     filter: drop-shadow(0 0 12px var(--accent));
     opacity: 0;
-    animation: logoFade 0.8s ease forwards, logoPulse 8s ease-in-out infinite;
+    animation:
+      logoFade 0.8s ease forwards,
+      logoFloat 6s ease-in-out infinite,
+      logoPulse 8s ease-in-out infinite;
   }
 
   @keyframes logoFade { to { opacity: 1; } }
 
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-6px) rotate(-3deg); }
+  }
+
   @keyframes logoPulse {
     0%, 100% { filter: drop-shadow(0 0 12px var(--accent)); }
     50% { filter: drop-shadow(0 0 22px var(--accent)); }
+  }
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
   }
 
   .top-row {
@@ -126,9 +193,6 @@
     border-radius: 2px;
   }
 
-  /* ============================
-       SEARCH BAR
-  ============================= */
   .search-container {
     flex: 1;
     display: flex;
@@ -154,9 +218,6 @@
     box-shadow: 0 0 14px rgba(157, 122, 255, 0.45);
   }
 
-  /* ============================
-       DISCORD BUTTON
-  ============================= */
   .discord-link {
     display: flex;
     align-items: center;
@@ -187,9 +248,6 @@
     background-size: cover;
   }
 
-  /* ============================
-       POSTER GRID + PANEL GLOW
-  ============================= */
   .poster-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
@@ -203,9 +261,6 @@
     backdrop-filter: blur(6px);
   }
 
-  /* ============================
-       POSTER CARD
-  ============================= */
   .poster-card {
     position: relative;
     border-radius: 10px;
@@ -255,9 +310,6 @@
     transform: translateY(-2px);
   }
 
-  /* ============================
-       HOVER OVERLAY
-  ============================= */
   .poster-info {
     position: absolute;
     bottom: 0;
@@ -317,95 +369,7 @@
     color: var(--accent);
     text-shadow: 0 0 5px rgba(127, 92, 255, 0.7);
   }
-
-  /* ============================
-       FOOTER
-  ============================= */
-  .footer {
-    text-align: center;
-    margin-top: 40px;
-    color: var(--muted-text);
-    font-size: 0.85rem;
-    opacity: 0.6;
-    text-shadow: 0 0 5px rgba(127, 92, 255, 0.4);
-  }
-
-  /* ============================
-       CORNER FRAMES (ALL 4)
-  ============================= */
-  .corner-frame {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  .corner {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    border: 2px solid var(--accent);
-    filter: drop-shadow(0 0 8px var(--accent));
-    border-radius: 8px;
-  }
-
-  .tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
-  .tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
-  .bl { bottom: 20px; left: 20px; border-right: none; border-top: none; }
-  .br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
-
-  /* ============================
-       MOBILE RESPONSIVE
-  ============================= */
-  @media (max-width: 600px) {
-    .page { padding: 14px; }
-    .title-image { width: 300px; margin: 0 auto; display: block; }
-    .top-row { flex-direction: column; align-items: center; text-align: center; gap: 12px; margin-bottom: 40px; }
-    .search-container { width: 100%; display: flex; justify-content: center; }
-    .poster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; max-width: 340px; margin: 0 auto; }
-    .poster-card { margin: 0 auto; }
-    .poster-number { font-size: 0.72rem; padding: 3px 8px; }
-  }
-  </style>
-</head>
-
-<body>
-
-  <!-- COSMIC BACKGROUND -->
-  <div class="cosmic-bg"></div>
-  <div class="vignette"></div>
-
-  <!-- CORNER FRAMES -->
-  <div class="corner-frame">
-    <div class="corner tl"></div>
-    <div class="corner tr"></div>
-    <div class="corner bl"></div>
-    <div class="corner br"></div>
-  </div>
-
-  <div class="page">
-
-    <div class="title-block">
-      <img src="images/illerVerse.png" class="title-image" alt="illerVerse Logo">
-    </div>
-
-    <div class="top-row">
-      <h2 class="site-subtitle">Catalog</h2>
-
-      <div class="search-container">
-        <input id="searchInput" placeholder="Search catalog..." autocomplete="off" />
-      </div>
-
-      <a class="discord-link" href="https://discord.gg/vpq26ScgUd" target="_blank">
-        <span class="discord-icon"></span>
-        <span>Discord</span>
-      </a>
-    </div>
-
-    <main>
-      <section class="poster-grid">
-
-        <article class="poster-card" data-number="1">
+    <article class="poster-card" data-number="1">
           <div class="poster-number">#1</div>
           <img class="poster-image" src="images/poster-01.jpg" alt="Black Bird" />
           <div class="poster-info">
