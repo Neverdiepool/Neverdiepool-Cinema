@@ -40,241 +40,17 @@
     z-index: 3;
   }
 
-  .cosmic-bg {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(127,92,255,0.12), transparent 60%),
-      radial-gradient(circle at 70% 80%, rgba(0,183,255,0.10), transparent 60%);
-    animation: drift 18s ease-in-out infinite alternate;
-  }
-
-  @keyframes drift {
-    0% { transform: translate(0px, 0px) scale(1); }
-    100% { transform: translate(20px, -20px) scale(1.05); }
-  }
-
-  .vignette {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    background: radial-gradient(circle, transparent 60%, rgba(0,0,0,0.55));
-  }
-
-  /* LOGO EFFECTS */
-  .logo-halo {
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 520px;
-    height: 260px;
-    border-radius: 50%;
-    background: radial-gradient(circle at center,
-      rgba(127,92,255,0.25),
-      rgba(0,0,0,0)
-    );
-    filter: blur(40px);
-    z-index: -1;
-    animation: haloPulse 10s ease-in-out infinite;
-  }
-
-  @keyframes haloPulse {
-    0%, 100% { opacity: 0.45; transform: translateX(-50%) scale(1); }
-    50% { opacity: 0.75; transform: translateX(-50%) scale(1.08); }
-  }
-
-  .particles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(127,92,255,0.55);
-    border-radius: 50%;
-    filter: blur(2px);
-    animation: floatParticle 12s linear infinite;
-  }
-
-  @keyframes floatParticle {
-    0% { transform: translateY(0) scale(1); opacity: 0.8; }
-    100% { transform: translateY(-120px) scale(0.4); opacity: 0; }
-  }
-
-  .light-streak {
-    position: absolute;
-    top: 50%;
-    left: -200px;
-    width: 600px;
-    height: 2px;
-    background: linear-gradient(90deg,
-      transparent,
-      rgba(127,92,255,0.6),
-      rgba(0,183,255,0.6),
-      transparent
-    );
-    filter: blur(4px);
-    animation: streakMove 12s ease-in-out infinite;
-  }
-
-  @keyframes streakMove {
-    0% { transform: translateX(-200px); opacity: 0; }
-    20% { opacity: 1; }
-    50% { transform: translateX(200px); opacity: 1; }
-    80% { opacity: 0; }
-    100% { transform: translateX(400px); opacity: 0; }
-  }
-
-  .title-image {
-    width: 420px;
-    transform: rotate(-3deg);
-    filter: drop-shadow(0 0 12px var(--accent));
-    opacity: 0;
-    animation:
-      logoFade 0.8s ease forwards,
-      logoFloat 6s ease-in-out infinite,
-      logoPulse 8s ease-in-out infinite;
-  }
-
-  @keyframes logoFade { to { opacity: 1; } }
-
-  @keyframes logoFloat {
-    0%, 100% { transform: translateY(0) rotate(-3deg); }
-    50% { transform: translateY(-6px) rotate(-3deg); }
-  }
-
-  @keyframes logoPulse {
-    0%, 100% { filter: drop-shadow(0 0 12px var(--accent)); }
-    50% { filter: drop-shadow(0 0 22px var(--accent)); }
-  }
-
-  .title-block {
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-  }
-
-  .top-row {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
-  .site-subtitle {
-    font-size: 1rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--muted-text);
-    opacity: 0.9;
-    margin: 0;
-    position: relative;
-  }
-
-  .site-subtitle::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 2px;
-    margin-top: 6px;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-    border-radius: 2px;
-  }
-
-  .search-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  #searchInput {
-    width: 100%;
-    max-width: 360px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    border: 1.5px solid rgba(127, 92, 255, 0.35);
-    background: #000f17;
-    color: white;
-    font-size: 1rem;
-    box-shadow: 0 0 8px rgba(127, 92, 255, 0.18);
-    outline: none;
-    transition: 0.25s ease;
-  }
-
-  #searchInput:focus {
-    border-color: #a78bff;
-    box-shadow: 0 0 14px rgba(157, 122, 255, 0.45);
-  }
-
-  .discord-link {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background: #5865f2;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: bold;
-    box-shadow: 0 0 12px rgba(88, 101, 242, 0.6);
-    transition: 0.25s ease;
-    white-space: nowrap;
-  }
-
-  .discord-link:hover {
-    box-shadow: 0 0 22px rgba(127, 92, 255, 0.9);
-    transform: translateY(-2px);
-  }
-
-  .discord-icon {
-    width: 22px;
-    height: 22px;
-    background-color: white;
-    mask: url("https://simpleicons.org/icons/discord.svg") no-repeat center;
-    -webkit-mask: url("https://simpleicons.org/icons/discord.svg") no-repeat center;
-    background-size: cover;
-  }
-
   .poster-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
     gap: 30px 26px;
     padding: 20px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.02);
-    box-shadow:
-      0 0 25px rgba(127,92,255,0.15),
-      0 0 45px rgba(0,183,255,0.12);
-    backdrop-filter: blur(6px);
   }
 
   .poster-card {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    opacity: 0;
-    animation: posterFade 0.6s ease forwards;
-    transform: translateY(4px);
-    transition: transform 0.25s ease;
-  }
-
-  @keyframes posterFade { to { opacity: 1; } }
-
-  .poster-card:hover {
-    transform: translateY(-4px);
   }
 
   .poster-number {
@@ -287,126 +63,82 @@
     color: var(--blue);
     border: 1px solid var(--accent);
     font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    filter: drop-shadow(0 0 6px var(--accent));
-    backdrop-filter: blur(4px);
   }
 
   .poster-image {
     width: 100%;
     border-radius: 10px;
-    box-shadow:
-      0 4px 14px rgba(0, 0, 0, 0.55),
-      0 0 10px rgba(127, 92, 255, 0.25);
-    transition: 0.25s ease;
-  }
-
-  .poster-card:hover .poster-image {
-    box-shadow:
-      0 0 18px var(--glow-1),
-      0 0 28px var(--glow-2);
-    transform: translateY(-2px);
   }
 
   .poster-info {
     position: absolute;
     bottom: 0;
-    left: 0;
     width: 100%;
-    padding: 16px 12px 20px;
-    padding-left: 14px;
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,0.85) 0%,
-      rgba(0,0,0,0.55) 40%,
-      rgba(0,0,0,0.0) 100%
-    );
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-    text-align: left;
-    pointer-events: none;
-  }
-
-  .poster-card:hover .poster-info {
-    opacity: 1;
-    transform: translateY(0);
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
   }
 
   .info-title {
     margin: 0;
     font-size: 1rem;
-    font-weight: 700;
-    color: white;
-    text-shadow: 0 0 6px rgba(127, 92, 255, 0.6);
-    line-height: 1.1;
   }
 
   .info-details {
-    margin-top: 6px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.78rem;
-    line-height: 1;
+    font-size: 0.8rem;
     color: var(--muted-text);
   }
+  </style>
+</head>
 
-  .rating-box {
-    padding: 2px 7px;
-    border-radius: 5px;
-    background: rgba(20, 12, 40, 0.75);
-    border: 1px solid rgba(127, 92, 255, 0.7);
-    box-shadow: 0 0 5px rgba(127, 92, 255, 0.45);
-    font-size: 0.72rem;
-    color: white;
-  }
+<body>
 
-  .stars {
-    color: var(--accent);
-    text-shadow: 0 0 5px rgba(127, 92, 255, 0.7);
-  }
-    <article class="poster-card" data-number="1">
-          <div class="poster-number">#1</div>
-          <img class="poster-image" src="images/poster-01.jpg" alt="Black Bird" />
-          <div class="poster-info">
-            <h3 class="info-title">Black Bird</h3>
-            <div class="info-details">
-              <span class="year">2022</span>
-              <span class="rating-box">R</span>
-              <span class="stars">★★★★★</span>
-            </div>
-          </div>
-        </article>
+<div class="page">
 
-      </section>
+  <div class="top-row">
+    <h2 class="site-subtitle">Cinema</h2>
 
-      <div class="footer">
-        illerVerse • illerFlix • Neverdiepool
-      </div>
-    </main>
-
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search..." />
+    </div>
   </div>
 
-  <script>
-    document.getElementById("searchInput").addEventListener("input", function () {
-      const query = this.value.toLowerCase();
-      const cards = document.querySelectorAll(".poster-card");
+  <section class="poster-grid">
 
-      cards.forEach(card => {
-        const title = card.querySelector(".info-title")?.textContent.toLowerCase() || "";
-        const year = card.querySelector(".year")?.textContent.toLowerCase() || "";
-        const number = card.dataset.number || "";
+    <article class="poster-card" data-number="1">
+      <div class="poster-number">#1</div>
+      <img class="poster-image" src="images/poster-01.jpg" alt="Black Bird" />
+      <div class="poster-info">
+        <h3 class="info-title">Black Bird</h3>
+        <div class="info-details">
+          <span class="year">2022</span> • R • ★★★★★
+        </div>
+      </div>
+    </article>
 
-        const combined = `${title} ${year} ${number}`.toLowerCase();
+  </section>
 
-        card.style.display = combined.includes(query) ? "block" : "none";
-      });
-    });
-  </script>
+  <div class="footer">
+    illerVerse • illerFlix • Neverdiepool
+  </div>
+
+</div>
+
+<script>
+document.getElementById("searchInput").addEventListener("input", function () {
+  const query = this.value.toLowerCase();
+  const cards = document.querySelectorAll(".poster-card");
+
+  cards.forEach(card => {
+    const title = card.querySelector(".info-title")?.textContent.toLowerCase() || "";
+    const year = card.querySelector(".year")?.textContent.toLowerCase() || "";
+    const number = card.dataset.number || "";
+
+    const combined = `${title} ${year} ${number}`.toLowerCase();
+
+    card.style.display = combined.includes(query) ? "block" : "none";
+  });
+});
+</script>
 
 </body>
 </html>
