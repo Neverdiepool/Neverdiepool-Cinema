@@ -264,7 +264,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  position: relative; /* required for glow positioning */
+  position: relative; /* anchor for glow */
 }
 
 #searchInput {
@@ -279,12 +279,33 @@
   box-shadow: 0 0 8px rgba(127, 92, 255, 0.18);
   outline: none;
   transition: 0.25s ease;
-  position: relative; /* required for glow bar */
 }
 
 #searchInput:focus {
   border-color: #a78bff;
   box-shadow: 0 0 14px rgba(157, 122, 255, 0.45);
+}
+
+/* ============================
+      SEARCH BAR GLOW LINE
+============================= */
+.search-container::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;          /* distance BELOW the search bar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;           /* match input max-width */
+  max-width: 100%;        /* stay within container on small screens */
+  height: 3px;
+  background: var(--accent);
+  box-shadow:
+    0 0 10px var(--accent),
+    0 0 20px var(--accent),
+    0 0 30px var(--accent);
+  border-radius: 4px;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 /* ============================
