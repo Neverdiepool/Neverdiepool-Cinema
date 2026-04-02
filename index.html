@@ -2656,43 +2656,38 @@ html, body {
   </div>
 </article>
 
-      </section>
+</section>
 
-      <div class="footer">
-        illerVerse • illerFlix • Neverdiepool
-      </div>
-    </main>
+<div class="footer">
+  illerVerse • illerFlix • Neverdiepool
+</div>
+</main>
+</div>
 
-  </div>
-
-  <!-- SEARCH SCRIPT -->
-  <script>
-    document.getElementById("searchInput").addEventListener("input", function () {
-      const query = this.value.toLowerCase();
-      const cards = document.querySelectorAll(".poster-card");
-
-      cards.forEach(card => {
-        const title = card.querySelector(".info-title")?.textContent.toLowerCase() || "";
-        const year = card.querySelector(".year")?.textContent.toLowerCase() || "";
-        const number = card.dataset.number || "";
-
-        const combined = `${title} ${year} ${number}`.toLowerCase();
-
-        card.style.display = combined.includes(query) ? "block" : "none";
-      });
-    });
-  </script>
-
-   <script>
+<!-- MERGED + CLEANED SCRIPTS -->
+<script>
   const cards = document.querySelectorAll(".poster-card");
 
+  // SEARCH FUNCTION
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+
+    cards.forEach(card => {
+      const title = card.querySelector(".info-title")?.textContent.toLowerCase() || "";
+      const year = card.querySelector(".year")?.textContent.toLowerCase() || "";
+      const number = card.dataset.number || "";
+      const combined = `${title} ${year} ${number}`.toLowerCase();
+
+      card.style.display = combined.includes(query) ? "block" : "none";
+    });
+  });
+
+  // SCROLL REVEAL
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.intersectionRatio >= 0.9) {
-        // Show when 90% visible
         entry.target.classList.add("show-info");
       } else if (entry.intersectionRatio <= 0.2) {
-        // Hide when less than 20% visible
         entry.target.classList.remove("show-info");
       }
     });
