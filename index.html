@@ -438,155 +438,99 @@ body {
 }
 
 /* ============================
-     MOBILE RESPONSIVE
+     MOBILE RESPONSIVE (FIXED)
 ============================= */
-@media (max-width: 600px) {
-  .page { padding: 14px; }
-  .title-image { width: 300px; margin: 0 auto; display: block; }
-  .top-row { flex-direction: column; align-items: center; text-align: center; gap: 12px; margin-bottom: 40px; }
-  .search-container { width: 100%; display: flex; justify-content: center; }
-  .poster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; max-width: 340px; margin: 0 auto; }
-  .poster-card { margin: 0 auto; }
-  .poster-number { font-size: 0.72rem; padding: 3px 8px; }
-}
-/* TRUE MOBILE CENTERING FIX */
-@media (max-width: 600px) {
-  .page {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 12px !important;
-  }
 
-  body {
-    display: block !important;
-  }
-
-  @media (max-width: 600px) {
-  .page {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 12px !important;
-  }
-
-    /* FINAL MOBILE CENTERING TWEAKS - paste at end of CSS */
-
-/* Ensure the viewport behaves and body centers content */
-html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* Strong mobile override */
 @media (max-width: 700px) {
+
+  /* Base layout */
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 100vh;
-    box-sizing: border-box;
   }
 
-  /* Make the page container exactly the viewport width and centered */
+  /* Page container */
   .page {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding-left: 14px !important;
-    padding-right: 14px !important;
-    box-sizing: border-box !important;
-    text-align: center !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 14px;
+    box-sizing: border-box;
+    text-align: center;
   }
 
-  /* Center the top row items and prevent left stacking */
+  /* Header */
+  .title-image {
+    width: 260px;
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Top row */
   .top-row {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    margin: 0 auto 28px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
   }
 
+  /* Search */
   .search-container {
-    width: 100% !important;
-    max-width: 420px !important;
-    display: flex !important;
-    justify-content: center !important;
-    margin: 0 auto !important;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
 
   #searchInput {
-    width: 100% !important;
-    max-width: 420px !important;
-    margin: 0 auto !important;
+    width: 100%;
+    max-width: 420px;
   }
 
-  /* Make poster grid centered and easier to read on phones */
+  /* Poster grid */
   .poster-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-    padding: 10px 0 !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    margin: 0 auto;
   }
 
   .poster-card {
-    margin: 0 auto !important;
-    width: 100% !important;
-    max-width: 420px !important;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
   }
 
-  .title-image {
-    margin: 0 auto !important;
-    display: block !important;
-    width: 260px !important;
-    max-width: 70% !important;
+  .poster-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-/* Optional debug outline to confirm centering visually (remove after testing) */
-@media (max-width: 700px) {
-  /* .page { outline: 2px dashed rgba(255,255,255,0.12); } */
-}
-
-    /* MICRO‑CENTERING POLISH */
-@media (max-width: 700px) {
-  .page {
-    text-align: center !important;
+  /* Tap to show info (mobile) */
+  .poster-card.show-info .poster-info {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .top-row,
-  .search-container,
-  .poster-grid {
-    margin-left: auto !important;
-    margin-right: auto !important;
+  .poster-number {
+    font-size: 0.72rem;
+    padding: 3px 8px;
   }
-
-  .poster-card {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
-    .poster-card.show-info .poster-info {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-    }
-
-  .poster-card {
-  aspect-ratio: 2 / 3;
-  overflow: hidden;
-}
-
-.poster-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
   </style>
